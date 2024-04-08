@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{msg}}
+    <h1>Change Password</h1>
+
+    <form action="/changePassword" method="post">
+        {% csrf_token %}
+        Email:-<input type="email" name="email" id="email" required><br>
+        Old Password:-<input type="password" name="oldPass" id="oldPass" required><br>
+        New Password:-<input type="password" name="newPass" id="newPass" required><br>
+        Confirm Password:-<input type="password" name="conPass" id="conPass" required><br>
+
+        <input type="submit" value="Change Password" name="submit">
+    </form>
+
+</body>
+</html>

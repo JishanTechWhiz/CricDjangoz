@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    {{msg}}
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <label for="Username"></label>
+      Username:<input type="text" name="Username" id="Username"><br>
+      <label for="Password"></label>
+      Password:<input type="password" name="Password" id="Password"><br>
+
+      <input type="submit" name="submit" value="Login">
+    </form>
+    <a href="{% url 'forgotPass' %}">Forgot Password</a>
+</body>
+</html>
