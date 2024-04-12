@@ -60,17 +60,20 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_HEADERS = (
-    'x-requested-with',
-    'content-type',
-    'accept',
-    'origin',
-    'authorization',
-    'x-csrftoken'
+    '*'
+    # 'x-requested-with',
+    # 'content-type',
+    # 'accept',
+    # 'origin',
+    # 'authorization',
+    # 'x-csrftoken'
+    #  'userId',
 )
 
 CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
+    '*'
+    # 'GET',
+    # 'POST',
 ]
 
 

@@ -64,7 +64,9 @@ class User(models.Model):
     Bowling_style = models.CharField(max_length=20, null=True,blank=True)
     Role = models.CharField(max_length=20, null=True,blank=True)
     def __str__(self):
-        return self.Username
+        # return f"{self.id} - {self.Username}"
+        return str(self.id)
+    
 #any validation change is create and update in def save function
     def save(self, *args, **kwargs):
         # Use make_password to hash the password before saving
@@ -139,8 +141,20 @@ class boxGround(models.Model):
     def __str__(self):
         return self.groundName
 
+class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ground = models.ForeignKey(boxGround, on_delete=models.CASCADE)
+    date = models.DateField()
+    time_slot = models.CharField(max_length=50)
+    status = models.CharField(max_length=20, default='pending')  # Status: pending, confirmed, cancelled
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.date} - {self.time_slot}"
+
 
 class Match(models.Model):
+    userId = models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
     team_id = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True,related_name='home_matches')
     team_id2 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True,related_name='away_matches')
     ground_id = models.ForeignKey(Ground, on_delete=models.SET_NULL, null=True)
@@ -209,6 +223,7 @@ class MatchScorerDetail(models.Model):
 
 class Tournament(models.Model):
     #bannerImg=models.ImageField(upload_to='photos',null=True)
+    userId = models.ForeignKey(User,null=True,on_delete=models.SET_NULL)
     tournamentName = models.CharField(max_length=50, null=False)
     city = models.ForeignKey(City,null=True,on_delete=models.SET_NULL)
     groundId = models.ForeignKey(Ground, null=True,on_delete=models.SET_NULL)
@@ -221,11 +236,11 @@ class Tournament(models.Model):
     ballType = models.CharField(choices=ballType,max_length=30, null=False)
     pitchType = models.CharField(choices=pitchType,max_length=30, null=False)
     description = models.CharField(max_length=255, null=False)
-    # def __str__(self):
-    #     return str(self.id)
-
     def __str__(self):
-        return self.tournamentName
+        return str(self.id)
+
+    # def __str__(self):
+    #     return self.tournamentName
 
     def f1(self):
         return mark_safe('<img src="{}" width="100%">'.format(self.bannerImg.url))

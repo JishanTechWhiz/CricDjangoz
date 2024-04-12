@@ -75,6 +75,10 @@ class boxGroundSerializer(serializers.ModelSerializer):
         model = boxGround
         fields = ['id','groundName','Location','groundTime','Price','isAvailable','rating','phone','boxImg']
 
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = ['id', 'user', 'ground', 'date', 'time_slot', 'status', 'price']
 
 
 class MatchSerializer(serializers.ModelSerializer):

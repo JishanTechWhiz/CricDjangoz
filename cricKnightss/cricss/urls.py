@@ -20,10 +20,18 @@ routers.register(r'tournaments', TournamentViewSet)
 routers.register(r'pointtables', PointTableViewSet)
 routers.register(r'tournamentTeams', TourTeamViewSet)
 routers.register(r'Scorecards', ScorecardViewSet)
+routers.register(r'booking', BookingListView)
 
 urlpatterns = [
     path('',include(routers.urls)),
     path('register/', UserViewSet.as_view({'post': 'register'}), name='register'),
     path('login/', UserViewSet.as_view({'post': 'login'}), name='login'),
+    #path('api/user/update_profile//', UserViewSet.as_view({'post': 'update_profile'}), name='update_profile'),
+    path('login_check/', login_check, name='login'),
+    path('update_profile/<int:user_id>/', update_profile, name='update_profile'),
+    #
+    path('check-time-slot-availability/', views.check_time_slot_availability),
+    path('book-ground/', views.book_ground),
+    path('booking-details/<int:booking_id>/', views.get_booking_details),
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
