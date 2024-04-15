@@ -33,5 +33,7 @@ urlpatterns = [
     path('check-time-slot-availability/', views.check_time_slot_availability),
     path('book-ground/', views.book_ground),
     path('booking-details/<int:booking_id>/', views.get_booking_details),
+    #
+    path('forgot_password/', views.forgot_password),
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

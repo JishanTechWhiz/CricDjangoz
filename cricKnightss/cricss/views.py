@@ -16,6 +16,13 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth import authenticate, login
 from rest_framework import status
 
+from django.contrib.auth import get_user_model
+from django.core.signing import TimestampSigner
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 
@@ -292,3 +299,27 @@ def get_booking_details(request, booking_id):
 
 
 
+# User = get_user_model()
+# signer = TimestampSigner()
+
+@csrf_exempt
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        user = get_object_or_404(User, email=email)
+        
+        # Sign the user's ID
+        #signed_user_id = signer.sign(str(user.id))
+        
+        # Send reset link to user's email
+        reset_link = f"https://changepassword.static.domains/"
+        
+        send_mail(
+            'Password Reset',
+            f'Click the link to reset your password: {reset_link}',
+            'jishanshaikh780@gmail.com',
+            [email],
+            fail_silently=False,
+        )
+        return JsonResponse({'message': 'Password reset link has been sent to your email.'})
+    return JsonResponse({'message': 'Invalid request method.'})
