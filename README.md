@@ -22,3 +22,7 @@ The cricKnight AdminPanel oversees user management, tournament verification, and
 - **Ground Registration**: Admins register both box cricket and regular cricket grounds, detailing location, facilities, and availability.
 
 ## 📱 Screenshots
+
+Register Screen  | 
+:-------------------------:|
+<img src="https://github.com/JishanTechWhiz/CricKnights-/blob/main/assets/Project_Image/3.jpg" height="600" width="400"> | 
