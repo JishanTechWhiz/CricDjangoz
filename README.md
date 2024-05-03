@@ -26,3 +26,7 @@ The cricKnight AdminPanel oversees user management, tournament verification, and
 AdminPanel Login Screen  | 
 :-------------------------:|
 <img src="https://github.com/JishanTechWhiz/CricDjangoz/blob/main/cricKnightss/media/photos/1.png" height="450" width="900"> | 
+
+AdminPanel Dashboard Screen  | 
+:-------------------------:|
+<img src="https://github.com/JishanTechWhiz/CricDjangoz/blob/main/cricKnightss/media/photos/2.png" height="450" width="900"> | 
