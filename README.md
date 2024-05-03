@@ -25,4 +25,4 @@ The cricKnight AdminPanel oversees user management, tournament verification, and
 
 Register Screen  | 
 :-------------------------:|
-<img src="https://github.com/JishanTechWhiz/CricKnights-/blob/main/assets/Project_Image/3.jpg" height="600" width="400"> | 
+<img src="https://github.com/JishanTechWhiz/CricKnights-/blob/main/assets/Project_Image/3.jpg" height="600" width="900"> | 
